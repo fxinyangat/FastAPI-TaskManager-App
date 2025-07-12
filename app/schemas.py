@@ -8,6 +8,7 @@ class TodoBase(BaseModel):
 class TodoCreate(TodoBase):
     pass
 
+
 class Todo(TodoBase):
     id: int
     owner_id : int
@@ -30,4 +31,3 @@ class User(UserBase):
 
     class Config:
         orm_model = True
-        

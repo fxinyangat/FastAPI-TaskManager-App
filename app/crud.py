@@ -13,6 +13,7 @@ def get_user_by_email(db: Session, email: str):
 def get_users(db:Session, skip:int=0, limit:int=100):
     return db.query(models.User).offset(skip).limit(limit).all()
 
+# creater a user
 def create_user(db:Session, user: schemas.UserCreate):
     db_user = models.User(email = user.email, name = user.name)
     db.add(db_user)
@@ -26,6 +27,7 @@ def create_user(db:Session, user: schemas.UserCreate):
 def get_todos(db: Session, skip:int=0, limit:int=100):
     return db.query(models.Todo).offset(skip).limit(limit).all()
 
+# create user todo
 def create_user_todo(db:Session, todo: schemas.TodoCreate, user_id:int):
     db_todo = models.Todo(**todo.model_dump(), owner_id=user_id)
     db.add(db_todo)
